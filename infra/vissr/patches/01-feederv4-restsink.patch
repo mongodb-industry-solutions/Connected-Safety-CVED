@@ -1,0 +1,296 @@
+diff --git a/feeder/feeder-template/feederv4/restsink.go b/feeder/feeder-template/feederv4/restsink.go
+new file mode 100644
+index 00000000..59be7369
+--- /dev/null
++++ b/feeder/feeder-template/feederv4/restsink.go
+@@ -0,0 +1,107 @@
++/**
++* (C) 2026 MongoDB, Inc.
++*
++* All files and artifacts are licensed under the provisions of the license provided by the LICENSE file in this repository.
++*
++**/
++
++package main
++
++import (
++	"bytes"
++	"encoding/json"
++	"net/http"
++	"time"
++
++	"github.com/covesa/vissr/utils"
++)
++
++/*
++* restSink forwards the set requests the feeder receives from the server to an HTTP REST endpoint.
++* The data points of one set request carry the same ts (see setRequestGrouper). They are collected per ts and
++* POSTed as one JSON object when no more data points for that ts have arrived within REST_BATCH_WINDOW:
++* {"ts": "2026-10-05T23:02:44.611Z", "data": [{"path": "CVED.Context.Occupant.Weight", "value": "85.5"}, ...]}
++* Posting is done asynchronously so that a slow or unreachable endpoint does not block the feeder.
++**/
++
++const REST_QUEUE_SIZE = 100
++const REST_BATCH_WINDOW = 200 * time.Millisecond
++const REST_POST_TIMEOUT = 5 * time.Second
++
++type restDataPoint struct {
++	Path  string `json:"path"`
++	Value string `json:"value"`
++}
++
++type restPayload struct {
++	Ts   string          `json:"ts"`
++	Data []restDataPoint `json:"data"`
++}
++
++type restSink struct {
++	url    string
++	client *http.Client
++	queue  chan setItem
++}
++
++var restSinkInst *restSink
++
++func newRestSink(url string) *restSink {
++	sink := &restSink{
++		url:    url,
++		client: &http.Client{Timeout: REST_POST_TIMEOUT},
++		queue:  make(chan setItem, REST_QUEUE_SIZE),
++	}
++	go sink.batcher()
++	return sink
++}
++
++func (r *restSink) Write(path string, value string, ts string) {
++	select {
++	case r.queue <- setItem{Path: path, Value: value, Ts: ts}:
++	default:
++		utils.Error.Printf("restSink: queue full, dropping set for %q", path)
++	}
++}
++
++func (r *restSink) batcher() {
++	var batch *restPayload
++	var flush <-chan time.Time // a new timeout per data point, a reused timer could deliver a stale expiry after a slow post
++	for {
++		select {
++		case item := <-r.queue:
++			if batch != nil && batch.Ts != item.Ts {
++				r.post(*batch)
++				batch = nil
++			}
++			if batch == nil {
++				batch = &restPayload{Ts: item.Ts}
++			}
++			batch.Data = append(batch.Data, restDataPoint{Path: item.Path, Value: item.Value})
++			flush = time.After(REST_BATCH_WINDOW)
++		case <-flush:
++			r.post(*batch)
++			batch = nil
++			flush = nil
++		}
++	}
++}
++
++func (r *restSink) post(payload restPayload) {
++	body, err := json.Marshal(payload)
++	if err != nil {
++		utils.Error.Printf("restSink: marshal failed, err=%s", err)
++		return
++	}
++	resp, err := r.client.Post(r.url, "application/json", bytes.NewBuffer(body))
++	if err != nil {
++		utils.Error.Printf("restSink: POST to %s failed, err=%s", r.url, err)
++		return
++	}
++	resp.Body.Close()
++	if resp.StatusCode < 200 || resp.StatusCode > 299 {
++		utils.Error.Printf("restSink: POST to %s returned %s", r.url, resp.Status)
++		return
++	}
++	utils.Info.Printf("restSink: posted %d data points (ts=%s) to %s", len(payload.Data), payload.Ts, r.url)
++}
+diff --git a/feeder/feeder-template/feederv4/restsink_test.go b/feeder/feeder-template/feederv4/restsink_test.go
+new file mode 100644
+index 00000000..0bc624e0
+--- /dev/null
++++ b/feeder/feeder-template/feederv4/restsink_test.go
+@@ -0,0 +1,133 @@
++package main
++
++import (
++	"encoding/json"
++	"net/http"
++	"net/http/httptest"
++	"sync"
++	"testing"
++	"time"
++)
++
++func newTestRestEndpoint(t *testing.T, status int) (*httptest.Server, func() []restPayload) {
++	var mu sync.Mutex
++	var received []restPayload
++	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
++		var p restPayload
++		if err := json.NewDecoder(req.Body).Decode(&p); err != nil {
++			t.Errorf("endpoint: bad JSON: %v", err)
++		}
++		mu.Lock()
++		received = append(received, p)
++		mu.Unlock()
++		w.WriteHeader(status)
++	}))
++	t.Cleanup(srv.Close)
++	return srv, func() []restPayload {
++		mu.Lock()
++		defer mu.Unlock()
++		return append([]restPayload(nil), received...)
++	}
++}
++
++func waitForPosts(get func() []restPayload, n int) []restPayload {
++	deadline := time.Now().Add(2 * time.Second)
++	for time.Now().Before(deadline) {
++		if got := get(); len(got) >= n {
++			return got
++		}
++		time.Sleep(20 * time.Millisecond)
++	}
++	return get()
++}
++
++func TestRestSinkBatchesDataPointsWithSameTs(t *testing.T) {
++	srv, received := newTestRestEndpoint(t, http.StatusOK)
++	sink := newRestSink(srv.URL)
++	sink.Write("CVED.Context.Occupant.Weight", "85.5", "ts1")
++	sink.Write("CVED.AutomatedCrashNotification.CrashIncident.Location.Latitude", "12.6", "ts1")
++	sink.Write("CVED.AutomatedCrashNotification.CrashIncident.Location.Longitude", "56.0", "ts1")
++
++	got := waitForPosts(received, 1)
++	time.Sleep(2 * REST_BATCH_WINDOW) // make sure no extra posts follow
++	got = received()
++	if len(got) != 1 {
++		t.Fatalf("got %d posts, want 1: %+v", len(got), got)
++	}
++	if got[0].Ts != "ts1" || len(got[0].Data) != 3 {
++		t.Fatalf("post = %+v, want ts1 with 3 data points", got[0])
++	}
++	if got[0].Data[0] != (restDataPoint{Path: "CVED.Context.Occupant.Weight", Value: "85.5"}) {
++		t.Errorf("first data point = %+v", got[0].Data[0])
++	}
++}
++
++func TestRestSinkNewTsStartsNewPost(t *testing.T) {
++	srv, received := newTestRestEndpoint(t, http.StatusOK)
++	sink := newRestSink(srv.URL)
++	sink.Write("CVED.Context.Occupant.Weight", "85.5", "ts1")
++	sink.Write("CVED.Context.Occupant.Weight", "86", "ts2")
++
++	got := waitForPosts(received, 2)
++	if len(got) != 2 || got[0].Ts != "ts1" || got[1].Ts != "ts2" {
++		t.Fatalf("posts = %+v, want ts1 then ts2", got)
++	}
++}
++
++func TestRestSinkEndpointErrorDoesNotBlock(t *testing.T) {
++	srv, received := newTestRestEndpoint(t, http.StatusInternalServerError)
++	sink := newRestSink(srv.URL)
++	done := make(chan struct{})
++	go func() {
++		for i := 0; i < 3*REST_QUEUE_SIZE; i++ {
++			sink.Write("CVED.Context.Occupant.Weight", "85.5", "ts1")
++		}
++		close(done)
++	}()
++	select {
++	case <-done:
++	case <-time.After(time.Second):
++		t.Fatal("Write blocked")
++	}
++	if got := waitForPosts(received, 1); len(got) == 0 {
++		t.Fatal("endpoint was never called")
++	}
++}
++
++// Regression: a reused time.Timer could deliver a stale expiry after a slow POST and flush the next batch early.
++func TestRestSinkSlowEndpointDoesNotSplitBatch(t *testing.T) {
++	var mu sync.Mutex
++	var received []restPayload
++	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
++		var p restPayload
++		json.NewDecoder(req.Body).Decode(&p)
++		mu.Lock()
++		isFirst := len(received) == 0
++		received = append(received, p)
++		mu.Unlock()
++		if isFirst {
++			time.Sleep(3 * REST_BATCH_WINDOW / 2)
++		}
++	}))
++	t.Cleanup(srv.Close)
++	get := func() []restPayload {
++		mu.Lock()
++		defer mu.Unlock()
++		return append([]restPayload(nil), received...)
++	}
++
++	sink := newRestSink(srv.URL)
++	// ts2 arrives right after ts1, so ts1 is posted (slowly) while its batch window is still running
++	sink.Write("CVED.Context.Occupant.Weight", "85.5", "ts1")
++	for i := 0; i < 4; i++ {
++		sink.Write("CVED.Context.Occupant.Weight", "85.5", "ts2")
++		time.Sleep(20 * time.Millisecond)
++	}
++
++	waitForPosts(get, 2)
++	time.Sleep(3 * REST_BATCH_WINDOW)
++	got := get()
++	if len(got) != 2 || got[1].Ts != "ts2" || len(got[1].Data) != 4 {
++		t.Fatalf("posts = %+v, want ts1 then ts2 with 4 data points", got)
++	}
++}
+diff --git a/feeder/feeder-template/feederv4/feederv4.go b/feeder/feeder-template/feederv4/feederv4.go
+index df15672c..bf9bbe78 100644
+--- a/feeder/feeder-template/feederv4/feederv4.go
++++ b/feeder/feeder-template/feederv4/feederv4.go
+@@ -422,8 +422,14 @@ func processFeederServerMessage(serverMessageMap map[string]interface{}, inputCh
+ 			return
+ 		}
+ 		if inFeederScope(domainData.Name, configData.Scope) {
+-			if mongoSinkInst != nil {
+-				mongoSinkInst.Write(domainData.Name, domainData.Value, setGrouper.GroupTs(ts, time.Now()))
++			if mongoSinkInst != nil || restSinkInst != nil {
++				requestTs := setGrouper.GroupTs(ts, time.Now())
++				if mongoSinkInst != nil {
++					mongoSinkInst.Write(domainData.Name, domainData.Value, requestTs)
++				}
++				if restSinkInst != nil {
++					restSinkInst.Write(domainData.Name, domainData.Value, requestTs)
++				}
+ 			}
+ 			select {
+ 			case inputChan <- domainData:
+@@ -1008,6 +1014,10 @@ func main() {
+ 		Required: false,
+ 		Help:     "MongoDB collection name used by --mongosink",
+ 		Default:  "feederSets"})
++	restSinkUrl := parser.String("", "restsink", &argparse.Options{
++		Required: false,
++		Help:     "POST set requests from the server as JSON to this HTTP endpoint",
++		Default:  ""})
+ 	// Parse input
+ 	err := parser.Parse(os.Args)
+ 	if err != nil {
+@@ -1081,6 +1095,11 @@ func main() {
+ 		utils.Info.Printf("MongoDB sink initialised, db=%s, collection=%s", *mongoDbName, *mongoCollName)
+ 	}
+ 
++	if len(*restSinkUrl) > 0 {
++		restSinkInst = newRestSink(*restSinkUrl)
++		utils.Info.Printf("REST sink initialised, url=%s", *restSinkUrl)
++	}
++
+ 	vssInputChan := make(chan DomainData, 3)
+ 	vssOutputChan := make(chan DomainData, 3)
+ 	vehicleInputChan := make(chan DomainData, 3)

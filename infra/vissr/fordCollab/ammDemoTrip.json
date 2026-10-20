@@ -1,0 +1,535 @@
+[
+ {
+  "path": "Vehicle.Cabin.Seat.Row1.DriverSide.Weight",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "85.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "85.5"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Speed",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "120"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "118"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "119"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "120"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "122"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "120"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "118"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "[\"118\", \"95\", \"75\"]"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "[\"118\", \"95\", \"75\"]"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Acceleration.Longitudinal",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "-0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "-0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "-1.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "[\"-1.5\", \"-3.5\", \"-7.5\"]"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "[\"-1.5\", \"-3.5\", \"-7.5\"]"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.AngularVelocity.Roll",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "[\"0\", \"0.5\", \"2.5\"]"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "[\"0\", \"0.5\", \"2.5\"]"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.CurrentLocation.Latitude",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "56.02024719364729"
+   },
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "56.02233748493814"
+   },
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "56.02565421151008"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "56.02823595803967"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "56.02823595803967"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "56.02823595803967"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "56.02823595803967"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "56.02823595803967"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "56.02823595803967"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.CurrentLocation.Longitude",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "12.599927977070497"
+   },
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "12.601058355542794"
+   },
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "12.602554268256588"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "12.603616368784676"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "12.603616368784676"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "12.603616368784676"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "12.603616368784676"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "12.603616368784676"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "12.603616368784676"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Safety.Airbag.IsReleased",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "true"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Identification.Name",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Anna Jensen"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "Anna Jensen"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatPosition.Row",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "1"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatPosition.Index",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "1"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "1"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatLayout.RowTotal",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "2"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatLayout.RowLayout",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "2"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.VehicleIdentification.Claim",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FA6P8CF0H1234567 and license plate number=EJ16968"
+   }
+  ]
+ }
+]

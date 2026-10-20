@@ -1,0 +1,719 @@
+CVED:
+  description: COVESA Vehicle Emergency Data Set.
+  type: branch
+
+CVED.AutomatedCrashNotification:
+  description: Branch containing Automated Crash Notification data.
+  type: branch
+
+CVED.AutomatedCrashNotification.AdditionalDetailsText:
+  datatype: string
+  description: 'Field for Comment. Format: Free Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.AgencyNotified:
+  description: Branch containing Agency Notified data.
+  type: branch
+
+CVED.AutomatedCrashNotification.AgencyNotified.AgencyName:
+  datatype: string
+  description: 'Name of agency notified by incident originator. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.AgencyNotified.ContactInformation:
+  description: Branch containing Contact Information data.
+  type: branch
+
+CVED.AutomatedCrashNotification.AgencyNotified.ContactInformation.Contact DateTime:
+  datatype: string
+  description: 'UTC date and time the notified agency was first contacted by incident originator. Value: CCYY-MM-DDThh:mm:ss.sss (concatenation of date and time, separated by a literal letter "T") as specified in xsd:dateTime.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.AgencyNotified.ContactInformation.CountryCode:
+  datatype: uint16
+  description: 'ITU-T Country Code if international. Format: Numeric.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.AgencyNotified.ContactInformation.FullTelephoneNumber:
+  datatype: string
+  description: '7 X 24 telephone number to contact the originating agency / called to contact agency. Format: NPA-NXX-LINE.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.AgencyNotified.EmployeeID:
+  datatype: string
+  description: 'Identification number or name of individual at agency who received call. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.AgencyNotified.OrganizationID:
+  datatype: string
+  description: 'Unique identifier for the agency receiving the data. Typically, this could be a NLETS ORI, a NG9-1-1 agency identifier, or another identifier. May be a required field for certain data transmission layers. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident:
+  description: Branch containing Crash Incident data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole:
+  description: Branch containing Crash Person Role data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person:
+  description: Branch containing Person data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.DateOfBirth:
+  datatype: string
+  description: 'Date of Birth for the Associated Individual expressed as at four-digit year, hyphen, two-digit month, hyphen, two-digit day. Format: yyyy-mm-dd.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.DriverLicense:
+  description: Branch containing DriverLicense data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.DriverLicense.DriverLicenseID:
+  datatype: string
+  description: 'Driver License Number. (If applicable) Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.DriverLicense.DriverLicenseState:
+  datatype: string
+  description: 'Driver''s License State or Province (If applicable). Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.EmergencyContactInformation:
+  description: Branch containing Emergency Contact Information data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.EmergencyContactInformation.ContactID:
+  datatype: uint32
+  description: 'ID for each emergency contact, 0 to infinity. Format: Numeric.'
+  type: actuator
+
+? CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.EmergencyContactInformation.Emergency ContactAddressFullText
+
+: datatype: string
+  description: 'Full Address of Emergency Contact. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.EmergencyContactInformation.EmergencyContactName:
+  datatype: string
+  description: 'Name of Emergency Contact. Format: Text.'
+  type: actuator
+
+? CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.EmergencyContactInformation.EmergencyContactPrimaryDeviceID
+
+: datatype: string
+  description: 'Emergency contact primary contact device number identification, i.e., Telephone or pager. Format: NPA-NXX-LINE.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.HearingImpairedIndicator:
+  datatype: boolean
+  description: 'Indicates whether the person is hearing impaired. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.MobilityImpairedIndicator:
+  datatype: boolean
+  description: 'Indicates whether the person is mobility impaired. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.OtherConditionsText:
+  datatype: string
+  description: 'Other condition information that may be of use to responders. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.PersonFullName:
+  datatype: string
+  description: 'Name of the associated person. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position:
+  description: Branch containing data on the position in the vehicle of the person.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position.Seat:
+  description: Data specifying the seat used by the occupant.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position.Seat.Index:
+  datatype: uint8
+  description: The seat index number. Starts at 1 for the leftmost seat and increases for each seat towards the right.
+  type: sensor
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position.Seat.Row:
+  datatype: uint8
+  description: The vehicle seat row number.
+  type: sensor
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position.SeatLayout:
+  description: Data that describes the seat layout of the vehicle.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position.SeatLayout.RowLayout:
+  datatype: uint8[]
+  description: The total number of seats for each seat row in the vehicle. The first array element refers to the front row, the last to the rear-most row.
+  type: sensor
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Position.SeatLayout.RowTotal:
+  datatype: uint8
+  description: The total number of seat rows in the vehicle. Starts at 1 for the front row and increases for each row towards the rear.
+  type: sensor
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.PrimaryLanguageCategoryCode:
+  datatype: string
+  description: 'Primary Language. Values: English, Spanish, French, German, Russian, Japanese, Chinese, Arabic, Italian, Korean, Portuguese, Vietnamese, (Other - Specified as Open Text). Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.Sex:
+  allowed:
+  - M
+  - F
+  datatype: string
+  description: 'Indicates the gender identity of the person. Values: M = Male, F = Female.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.Person.SpeechImpairedIndicator:
+  datatype: boolean
+  description: 'Indicates whether the person is speech impaired. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.PersonID:
+  datatype: uint32
+  description: 'A sequential identification assigned to each person involved in a crash or other incident. First person has the value 0, second person has the value 1, etc. Format: Numeric.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.PersonRoleCategoryCode:
+  allowed:
+  - CONFIRMED
+  - PRIMARY
+  - FREQUENT
+  - PASSENGER
+  - SUBSCRIBER
+  - OWNER
+  datatype: string
+  description: 'Describes the role of any person involved in the crash or other incident. This field may occur multiple times. Values: CONFIRMED (Confirmed Driver), PRIMARY (Primary Driver), FREQUENT (Frequent Driver), PASSENGER (Passenger), SUBSCRIBER (Telematics Service Subscriber), OWNER (Vehicle Owner). Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashPersonRole.RoleofPersonID:
+  datatype: string
+  description: Reference identifier linking this crash person role to the associated Person record (corresponds to the RoleOfPersonReference link in the VEDS XML structure).
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle:
+  description: Branch containing Crash Vehicle data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Airbag:
+  description: Branch containing Airbag data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Airbag.AirbagCategoryCode:
+  allowed:
+  - FRONT
+  - SIDE
+  - CURTAIN
+  - ROOF
+  - SEAT
+  datatype: string
+  description: 'Categorizes this airbag. Values: FRONT (front), SIDE (side), CURTAIN (curtain), ROOF (roof), SEAT (seat belt airbag). Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Airbag.AirbagDeployedIndicator:
+  datatype: boolean
+  description: 'Indicates if this airbag is deployed. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.ConvertibleIndicator:
+  datatype: boolean
+  description: 'Indicates whether a vehicle is a convertible. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse:
+  description: Branch containing Crash Pulse data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.ChangeInVelocity:
+  datatype: uint16
+  description: 'Force of impact based on the change in velocity over the duration of the crash pulse (measured in units of 0-999 KPH or MPH. Format: The KPH or MPH numeric value and the string "MPH" or "KPH".'
+  max: 999
+  min: 0
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.ChangeInVelocityUnit:
+  allowed:
+  - MPH
+  - KPH
+  datatype: string
+  description: 'Unit of measure for the Change in Velocity value. Values: MPH, KPH.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.DigitalImageLocation:
+  datatype: string
+  description: 'URL where digital image is available. Format: URL.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.ImpactID:
+  datatype: string
+  description: 'Numerical and sequential impact identifier. Values: First, Second, Third, Forth, Fifth, Sixth, Seventh, Eight, Ninth, Tenth, (etc.). Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.PrincipalDirectionOfForceText:
+  datatype: uint8
+  description: Principal direction of the force of the impact to nearest O'clock Reading (valid numbers are integers 1 through 12, where 12 O'clock corresponds to a frontal collision, 3 O'clock corresponds to a passenger side (right side) collision etc.
+  max: 12
+  min: 1
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.RollBarDeployedIndicator:
+  datatype: boolean
+  description: 'Is Roll Bar Deployed? Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.RolloverIndicator:
+  datatype: boolean
+  description: 'Indicates if the vehicle rolled over. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.CrashPulse.RolloverQuarterTurnNumber:
+  datatype: uint16
+  description: 'Number of quarter turns in concert with a rollover. Expressed as a non-negative integer. Format: Non-negative integer.'
+  min: 0
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.DOTNumber:
+  datatype: uint32
+  description: 'USDOT assigned vehicle number (if commercial); USDOT value could be used for other purposes, i.e., LoJack, OnStar, etc. Format: seven digits (NNNNNNN).'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.InteriorColor:
+  datatype: string
+  description: 'Indicates Vehicle Interior Color. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.MakeText:
+  datatype: string
+  description: 'Indicates vehicle make, e.g., Cadillac, Ford. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.ModelText:
+  datatype: string
+  description: 'Indicates vehicle model, e.g., Escalade, Taurus. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.ModelYear:
+  datatype: uint16
+  description: 'Indicates vehicle model year, e.g., 2002. Format: normally a simple four-digit year, but any xsd:gYear value is permitted.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.PowerSourceCategoryCode:
+  allowed:
+  - MAIN
+  - BACKUP
+  - OTHER
+  datatype: string
+  description: 'Indicates the nature of the power source. Values: MAIN (main battery), BACKUP (backup battery), OTHER.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.PrimaryColor:
+  datatype: string
+  description: 'Indicates Primary Color of Vehicle. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Registration:
+  description: Branch containing Registration data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Registration.PlateNumber:
+  datatype: string
+  description: 'Indicates license plate number of vehicle. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Registration.PlateState:
+  datatype: string
+  description: 'Indicates the license plate state. Values: State abbreviation (United States and Mexico), Canadian province, otherwise full value if other location. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Seat:
+  description: Branch containing Seat data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Seat.BeltFastenedIndicator:
+  datatype: boolean
+  description: 'Indicates if this seatbelt is fastened. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Seat.BeltMonitoredIndicator:
+  datatype: boolean
+  description: 'Indicates if this seatbelt is being monitored. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Seat.OccupiedIndicator:
+  datatype: boolean
+  description: 'Indicates if this seat sensor determines seat is occupied. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.Seat.SeatID:
+  datatype: uint8
+  description: 'Indicates seatbelt and seat sensor data for individual seat positions in the vehicle. Required attribute Position. Values 1-9: 1=Driver front, 2=Passenger front, 3=second row left, 4=second row middle, 5=second row right, 6=third row left, 7=third row middle, 8=third row right, 9=front row middle.'
+  max: 9
+  min: 1
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.SecondaryColor:
+  datatype: string
+  description: 'Indicates Vehicle Secondary Color. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VIN:
+  datatype: string
+  description: 'Vehicle Identification Number, length of 17 characters. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VehicleAutonomousCapabilityCode:
+  datatype: uint8
+  description: 'Based on the SAE International''s Standard J3016, this code list classifies a system''s level of sophistication. Values: 0 = Not Autonomous, 1 = Driver Assistance, 2 = Partial Automation, 3 = Conditional Automation, 4 = High Automation, 5 = Complete Automation. Format: Numeric.'
+  max: 5
+  min: 0
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VehicleBodyType:
+  datatype: uint16
+  description: 'Vehicle Body Type. Values: A code in the range 101 through 116, per NIEM 2.0: 101 Passenger Car, 102 (Sport)Utility Vehicle, 103 Passenger Van, 104 Cargo Van (10,000 lbs (4,536 kg) or less), 105 Pick Up, 106 Motor Home, 107 School Bus, 108 Transit Bus, 109 Motor Coach, 110 Other Bus, 111 Motorcycle, 112 Moped, 113 Low Speed Vehicle, 114 Other Light Trucks (10,000 lbs (4,536 kg) or less), 115 Medium/Heavy Trucks (more than 10,000 lbs (4,536 kg)), 116 Other. Notes: Motorcycles (Includes motorcycles, motor scooters, mopeds, motor-powered bicycles, three-wheel motorcycles, and All-Terrain Vehicles.) Typical vehicles have saddle type seats and are steered by handlebars rather than steering wheels; Passenger Vehicles (Includes Passenger Cars, Electric Vehicles, Alternate Propulsion Vehicles, Utility Vehicles, Van-Based Light Trucks, Light Conventional Trucks, and Other Light Conventional Trucks <10,000 lbs.) Typical vehicles are those manufactured primarily for the purpose of carrying passengers and single-unit
+    vehicles pulling recreational or other light trailers); Buses (All Buses except van-based); Motor Homes (All classes including light/medium/heavy truck-based motor homes, and campers or unknown type motor homes); Heavy/Medium Vehicles 10,000-30,000 lbs (Typically trucks with dual rear wheels or more than two axles); Semi-Truck (Big rig, transport vehicle, may be up to 120,000 lbs); Other Vehicles (Snowmobiles, farm vehicles, construction equipment other than trucks, street sweepers, dune buggy, go-cart- golf cart, etc.)'
+  max: 116
+  min: 101
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VehicleHumanDriverEngagedIndicator:
+  datatype: boolean
+  description: 'True indicates that the vehicle has detected that the human driver was engaged (e.g., hands on the wheel, eyes on the road) at the time that the data was collected during the crash. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VehiclePedestrianProtectionDeviceDeployedIndicator:
+  datatype: boolean
+  description: 'True indicates that the vehicle pedestrian protection device deployed during the crash. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VehiclePropulsionStorageTypeCode:
+  allowed:
+  - Gasoline
+  - CNG
+  - Diesel
+  - Electric
+  - Ethanol
+  - Hydrogen
+  - LPG
+  - Other
+  datatype: string
+  description: 'A code list that describes the method that is used to store energy for a vehicle. Values: Gasoline = Gasoline Storage Present, CNG = Compressed Natural Gas Storage Present, Diesel = Diesel Storage Present, Electric = Electric Energy Storage Present, Ethanol = Ethanol Storage Present, Hydrogen = Hydrogen Storage Present, LPG = Liquid Propane Gas Storage Present, Other = Other.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.CrashVehicle.VehicleUnladenWeight:
+  datatype: uint32
+  description: 'Indicates curbside weight of vehicle measured in pounds. Format: a positive integer.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Final RestOrientationCode:
+  allowed:
+  - NORMAL
+  - DRIVER
+  - PASSENGER
+  - ROOF
+  - REAR
+  - FRONT
+  - UNKNOWN
+  datatype: string
+  description: 'Orientation of vehicle at final rest. Values: Normal, Driver, Passenger, Roof, Rear (Rear Bumper), Front (Front Bumper), Unknown. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.FuelLeakingIndicator:
+  datatype: boolean
+  description: 'Indicates if a fuel leak has been detected. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.IncidentDateTime:
+  datatype: string
+  description: 'UTC date and time of the incident. Value: CCYY-MM-DDThh:mm:ss.sss (concatenation of date and time, separated by a literal letter "T") as specified in xsd:dateTime.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.IncidentID:
+  datatype: string
+  description: 'Indicates the internal case identifier number of the incident used by the incident originator. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location:
+  description: Branch containing Location data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.CrossStreetDescriptionText:
+  datatype: string
+  description: 'This is the closest cross street to the incident. May be the first street of an intersection. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.Datum:
+  datatype: string
+  description: 'Map projection and coordinate system recommended for the display of the Longitude and Latitude coordinates. Example values permitted by the nc:GeographicDatumCode code list: NAR-C (Contiguous United States), NAR-A (Alaska), NAR-B (Canada), NAR-H (Hawaii), NAS-A (Eastern United States), NAS-B (Western United States) (Additional values are as specified in the nc:GeographicDatumCode code list). NOTE: nc:GeographicDatumCode does not permit WGS84 nor NAD83. However, VEDS is carried in an NG9-1-1 call, which conveys a PIDF-LO that can use WGS84 and other values.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.Latitude:
+  datatype: double
+  description: 'Latitudinal coordinate of the incident site in decimal degrees (-90° to +90°). Child element of Location. Format: (+/-) 00.###### Omit value if latitude is unknown.'
+  max: 90
+  min: -90
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationAddress:
+  description: Branch containing Location Address data.
+  type: branch
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationAddress.StreetName:
+  datatype: string
+  description: 'A name of a street. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationAddress.StreetNumber:
+  datatype: uint32
+  description: 'A number that identifies a particular unit or location within a street. Format: Numeric.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationAddress.StreetPostDirectionalText:
+  datatype: string
+  description: 'A direction that appears after a street name. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationAddress.StreetPreDirectional:
+  datatype: string
+  description: 'A direction that appears before a street name. Format: Alpha.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationAddress.StreetType:
+  datatype: string
+  description: 'A kind of street. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.LocationDescription:
+  datatype: string
+  description: Free text description of the incident location (corresponds to nc:LocationDescriptionText in the VEDS XML structure), e.g. a landmark or other descriptive note supplementing the coordinates/address.
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.Location.Longitude:
+  datatype: double
+  description: 'Longitudinal coordinate of the incident site in decimal degrees (-180 to +180°). Child element of Location. Format: (+/-) 000.###### Omit value if longitude is unknown.'
+  max: 180
+  min: -180
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.MultipleImpactsIndicator:
+  datatype: boolean
+  description: 'Indicates if the vehicle was subjected to multiple impacts. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.SevereInjuryIndicator:
+  datatype: boolean
+  description: 'High Likelihood of Severe Injury? Values: true, false. The value ''true'' indicates a greater than 20% probability of an Injury Severity Score ISS15 as predicted by an injury severity algorithm per the recommendations from the 2008 CDC AACN Expert Panel.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.VehicleFireIndicator:
+  datatype: boolean
+  description: 'Indicates if any part of the vehicle is on fire. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.CrashIncident.VehicleHeadingMeasure:
+  datatype: uint16
+  description: 'Direction vehicle was heading directly before crash, as a measure of the angular heading of the vehicle. Values: A compass heading in the range 0 to 359. NIEM 2.1 defines this as a point value, a range, or text. RFC 8148 has an example of ''278'', as a compass heading. Specifying this seems more consistent and reliable.'
+  max: 359
+  min: 0
+  type: actuator
+
+CVED.AutomatedCrashNotification.DeviceTypeCode:
+  allowed:
+  - NORMAL
+  - AIRBAG
+  - TENSIONER
+  - ACCELEROMETERS
+  - MANUAL
+  - INJURY
+  - OTHER
+  datatype: string
+  description: 'Type of device that caused event notification to occur. Values: NORMAL, AIRBAG (AACN Airbag), TENSIONER (AACN Seatbelt Tensioner), ACCELEROMETERS (AACN Vehicle Accelerometers), MANUAL (Manual Push Button), INJURY (AACN Injury Severity), OTHER (AACN Other).'
+  type: actuator
+
+CVED.AutomatedCrashNotification.EventVerifiedIndicator:
+  datatype: boolean
+  description: 'Indicates if there was confirmation (either verbal or electronic) of the event by the incident originator and a PSAP or other public safety agency. Values: true (incident verified), false (incident not verified).'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator:
+  description: Branch containing Incident Originator data.
+  type: branch
+
+CVED.AutomatedCrashNotification.IncidentOriginator.ContactInformation:
+  description: Branch containing Contact Information data.
+  type: branch
+
+CVED.AutomatedCrashNotification.IncidentOriginator.ContactInformation.Contact DateTime:
+  datatype: string
+  description: 'UTC date and time the notified agency was first contacted by incident originator. Value: CCYY-MM-DDThh:mm:ss.sss (concatenation of date and time, separated by a literal letter "T") as specified in xsd:dateTime.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.ContactInformation.CountryCode:
+  datatype: uint16
+  description: 'ITU-T Country Code if international. Format: Numeric.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.ContactInformation.FullTelephoneNumber:
+  datatype: string
+  description: '7 X 24 telephone number to contact the originating agency / called to contact agency. Format: NPA-NXX-LINE.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.EmployeeID:
+  datatype: string
+  description: 'ID of the employee that initiated the data transmission to the ECC. Typically, an employee''s initials or other ID. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.IncidentOriginatorIndicator:
+  datatype: boolean
+  description: 'Indicates if the source providing the data is the originator of the incident. Values: true, false.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.OrganizationID:
+  datatype: string
+  description: 'A unique identifier for possible interface exchanges between a Telematics Service Provider and a 9-1-1 ECC using NG9-1-1, NLETS, or another transport method. Superseded in most cases by the metadata/control object of RFC8147, as referenced in RFC8148. A suggested value is the Content-ID of the metadata/control object sent with the NG9-1-1-call. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.OriginatorCategoryCode:
+  allowed:
+  - VEHICLE
+  - DIRECT
+  - TELEMATICS
+  - ROADSIDE
+  - COMMERCIAL
+  - PSAP
+  - PSA
+  datatype: string
+  description: 'Categorizes the provider or source of the data. As with most VEDS elements, this element may appear multiple times, e.g., a data source may be In-Vehicle Telemetry and a second data source may be the Vehicle Telematics Service Provider, while a third data source might be the Public Safety Agency. Values: VEHICLE (In-Vehicle Telemetry), DIRECT (Direct Dial), TELEMATICS (Vehicle Telematics Service Provider), ROADSIDE (Roadside Assistance Provider), COMMERCIAL (Commercial Vehicle Operator), PSAP (Public Safety Answering Point, also known as Emergency Communications Center), PSA (Public Safety Agency).'
+  type: actuator
+
+CVED.AutomatedCrashNotification.IncidentOriginator.ProviderName:
+  datatype: string
+  description: 'Name of provider or system providing data. Format: Text.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.ReceivedDateTime:
+  datatype: string
+  description: 'UTC date and time that the incident originator received notification of the incident. Value: CCYY-MM-DDThh:mm:ss.sss (concatenation of date and time, separated by a literal letter "T") as specified in xsd:dateTime.'
+  type: actuator
+
+CVED.AutomatedCrashNotification.TransmissionDateTime:
+  datatype: string
+  description: 'UTC date and time that the incident data was transmitted to the PSAP when such a transport mechanism exists such as NLETS or NG9-1-1. Value: CCYY-MM-DDThh:mm:ss.sss (concatenation of date and time, separated by a literal letter "T") as specified in xsd:dateTime.'
+  type: actuator
+
+CVED.Context:
+  description: Additional contextual data.
+  type: branch
+
+CVED.Context.Claim:
+  datatype: string
+  description: Verifiable claim of the vehicle emergency data
+  type: actuator
+
+CVED.Context.Occupant:
+  description: Additional occupant data
+  type: branch
+
+CVED.Context.Occupant.SeatPosition:
+  description: Occupant seat position data
+  type: branch
+
+CVED.Context.Occupant.SeatPosition.Index:
+  datatype: uint8
+  description: The seat index of the row where the occupant is seated
+  type: actuator
+
+CVED.Context.Occupant.SeatPosition.Row:
+  datatype: uint8
+  description: The seat row where the occupant is seated
+  type: actuator
+
+CVED.Context.Occupant.Weight:
+  datatype: float
+  description: Occupant weight
+  min: 0
+  type: actuator
+
+CVED.Context.OccupantCount:
+  datatype: uint8
+  default: 1
+  description: Number of occupants in the vehicle
+  min: 1
+  type: actuator
+
+CVED.Context.Vehicle:
+  description: Additional vehicle data
+  type: branch
+
+CVED.Context.Vehicle.SeatLayout:
+  description: Vehicle seat layout
+  type: branch
+
+CVED.Context.Vehicle.SeatLayout.RowLayout:
+  datatype: uint8
+  description: The seat index of the row where the occupant is seated
+  type: actuator
+
+CVED.Context.Vehicle.SeatLayout.RowTotal:
+  datatype: uint8
+  description: The total number of vehicle seat rows
+  type: actuator
+
+CVED.Context.Vehicle.TimeSeries:
+  description: Time series vehicle data
+  type: branch
+
+CVED.Context.Vehicle.TimeSeries.Acceleration:
+  description: Spatial acceleration. Axis definitions according to ISO 8855.
+  type: branch
+
+CVED.Context.Vehicle.TimeSeries.Acceleration.Longitudinal:
+  datatype: float[]
+  description: Vehicle acceleration in X (longitudinal acceleration) time series.
+  type: actuator
+  unit: m/s^2
+
+CVED.Context.Vehicle.TimeSeries.AngularVelocity:
+  description: Spatial rotation. Axis definitions according to ISO 8855.
+  type: branch
+
+CVED.Context.Vehicle.TimeSeries.AngularVelocity.Roll:
+  datatype: float[]
+  description: Vehicle rotation rate along X (longitudinal) time series.
+  type: actuator
+  unit: degrees/s
+
+CVED.Context.Vehicle.TimeSeries.Speed:
+  datatype: float[]
+  description: Vehicle speed time series.
+  type: actuator
+  unit: km/h
+
+CVED.Version:
+  description: CVED version data.
+  type: branch
+
+CVED.Version.Major:
+  datatype: uint32
+  default: 0
+  description: Major version.
+  type: attribute
+
+CVED.Version.Minor:
+  datatype: uint32
+  default: 1
+  description: Minor version.
+  type: attribute
+
+CVED.Version.Patch:
+  datatype: uint32
+  default: 0
+  description: Patch version.
+  type: attribute

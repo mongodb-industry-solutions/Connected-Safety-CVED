@@ -1,0 +1,17 @@
+HIM:
+type: branch
+description: Defines the set of trees that are managed as one virtual domain by the cloud server.
+
+HIM.CVED:
+type: direct
+domain: Vehicle.CVED.Data
+version: 0.1
+local: forest/CVED_Specificationv0.1.binary
+description: Connected Vehicle Emergency Dataset.
+
+HIM.Server:
+type: direct
+domain: Server.Capabilities.Data
+version: 0.1
+local: forest/server.binary
+description: The server capabilities tree.

@@ -1,0 +1,33 @@
+{
+  "name": "rtic911-sim",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbopack --port ${PORT:-5050}",
+    "build": "next build --turbopack",
+    "start": "next start --port ${PORT:-5050}",
+    "lint": "eslint",
+    "seed": "node scripts/seed.mjs",
+    "reset": "node scripts/reset.mjs",
+    "tpn": "npx --no-install license-checker --production --json > third-party-licenses.json && node scripts/generate_third_party_notices.mjs"
+  },
+  "dependencies": {
+    "@via-ds/components": "0.9.0",
+    "@via-ds/icons": "0.1.3",
+    "@via-ds/tokens": "0.3.4",
+    "dotenv": "^17.2.2",
+    "mongodb": "^6.19.0",
+    "next": "^15.5.7",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.2",
+    "license-checker": "^25.0.1",
+    "tailwindcss": "^4"
+  }
+}

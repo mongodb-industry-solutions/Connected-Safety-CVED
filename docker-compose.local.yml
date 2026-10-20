@@ -1,0 +1,30 @@
+# Local mode (the default of make start): MongoDB Community in a container instead of Atlas.
+services:
+  mongodb:
+    image: mongo:8
+    ports:
+      - "127.0.0.1:27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "quit(db.adminCommand({ ping: 1 }).ok ? 0 : 1)"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - mongodb-data:/data/db
+
+  vissr-cloud:
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+
+  rtic911:
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+
+volumes:
+  mongodb-data:

@@ -1,0 +1,52 @@
+# Connected Safety CVED demo: vehicle -> Crash Monitor Agent -> cloud -> MongoDB + RTIC 911.
+# Settings come from .env (compose reads it). Use the makefile: make start (local MongoDB) or make start DB=atlas (MONGODB_URI from .env).
+name: connected-safety-cved
+
+# one VISSR image (infra/vissr), built by vissr-vehicle and reused by crash-agent and vissr-cloud
+x-vissr: &vissr
+  image: connected-safety-cved/vissr
+  pull_policy: never
+
+services:
+  vissr-vehicle:
+    image: connected-safety-cved/vissr
+    build:
+      context: ./infra/vissr
+      args:
+        VISSR_REPO: ${VISSR_REPO:-https://github.com/COVESA/vissr.git}
+        VISSR_REF: ${VISSR_REF:-bd3c356b}
+    command: ["/app/start-vehicle.sh"]
+    environment:
+      TRIP: ${TRIP:-ammDemoTrip}
+    ports:
+      - "127.0.0.1:8888:8888" # VISS HTTP
+      - "127.0.0.1:8080:8080" # VISS WebSocket
+
+  crash-agent:
+    <<: *vissr
+    command: ["/app/start-cma.sh"]
+    # shares the vehicle's network, the agent connects to the vehicle server on localhost:8080
+    network_mode: service:vissr-vehicle
+    depends_on: [vissr-vehicle, vissr-cloud]
+    environment:
+      CMA_CLOUD_URL: http://vissr-cloud:8888
+    restart: "no"
+
+  vissr-cloud:
+    <<: *vissr
+    command: ["/app/start-cloud.sh"]
+    environment:
+      MONGODB_URI: ${MONGODB_URI:-}
+      DATABASE_NAME: ${DATABASE_NAME:-connected_safety_cved}
+      RTIC_ALERT_URL: http://rtic911:5050/api/alerts
+    ports:
+      - "127.0.0.1:9888:8888" # VISS HTTP of the cloud server
+
+  rtic911:
+    build:
+      context: ./rtic911
+    environment:
+      MONGODB_URI: ${MONGODB_URI:-}
+      DATABASE_NAME: ${DATABASE_NAME:-connected_safety_cved}
+    ports:
+      - "127.0.0.1:5050:5050"

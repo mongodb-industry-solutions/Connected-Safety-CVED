@@ -1,0 +1,81 @@
+diff --git a/server/vissv2server/serviceMgr/storage_backend.go b/server/vissv2server/serviceMgr/storage_backend.go
+index bca39745..7f2beedd 100644
+--- a/server/vissv2server/serviceMgr/storage_backend.go
++++ b/server/vissv2server/serviceMgr/storage_backend.go
+@@ -22,6 +22,7 @@ package serviceMgr
+ 
+ import (
+ 	"database/sql"
++	"encoding/json"
+ 	"fmt"
+ 	"time"
+ 
+@@ -134,9 +135,20 @@ func (r *redisBackend) Get(path string) string {
+ 	return dp
+ }
+ 
++// feederSetMessage builds the set message sent to the feeder. The path and value are JSON encoded,
++// so that values containing quotes or backslashes, e.g. a JSON array, do not produce malformed JSON.
++func feederSetMessage(path, value, ts string) string {
++	return `{"action": "set", "data": {"path":` + jsonString(path) + `, "dp":{"value":` + jsonString(value) + `, "ts":"` + ts + `"}}}`
++}
++
++func jsonString(s string) string {
++	b, _ := json.Marshal(s) // marshalling a string cannot fail
++	return string(b)
++}
++
+ func (r *redisBackend) Set(path, value string) string {
+ 	ts := utils.GetRfcTime()
+-	message := `{"action": "set", "data": {"path":"` + path + `", "dp":{"value":"` + value + `", "ts":"` + ts + `"}}}`
++	message := feederSetMessage(path, value, ts)
+ 	r.toFeeder <- message
+ 	return ts
+ }
+@@ -169,7 +181,7 @@ func (m *memcacheBackend) Get(path string) string {
+ 
+ func (m *memcacheBackend) Set(path, value string) string {
+ 	ts := utils.GetRfcTime()
+-	message := `{"action": "set", "data": {"path":"` + path + `", "dp":{"value":"` + value + `", "ts":"` + ts + `"}}}`
++	message := feederSetMessage(path, value, ts)
+ 	m.toFeeder <- message
+ 	return ts
+ }
+diff --git a/server/vissv2server/serviceMgr/storage_backend_test.go b/server/vissv2server/serviceMgr/storage_backend_test.go
+index ddfb12ac..0e589bb5 100644
+--- a/server/vissv2server/serviceMgr/storage_backend_test.go
++++ b/server/vissv2server/serviceMgr/storage_backend_test.go
+@@ -26,6 +26,7 @@
+ package serviceMgr
+ 
+ import (
++	"encoding/json"
+ 	"strings"
+ 	"testing"
+ 	"time"
+@@ -140,6 +141,25 @@ func TestMemcacheBackend_SetPushesMessageToFeeder(t *testing.T) {
+ 	}
+ }
+ 
++// TestRedisBackend_SetEscapesValue verifies that a value containing quotes, e.g. a JSON array
++// of time series values, produces a feeder message that is valid JSON and keeps the value intact.
++func TestRedisBackend_SetEscapesValue(t *testing.T) {
++	feeder := make(chan string, 1)
++	b := newRedisBackend(nil, feeder)
++	value := `["118", "95", "75"]`
++	b.Set("Vehicle.Speed", value)
++	msg := <-feeder
++	var messageMap map[string]interface{}
++	if err := json.Unmarshal([]byte(msg), &messageMap); err != nil {
++		t.Fatalf("feeder message is not valid JSON: %v, message=%s", err, msg)
++	}
++	data := messageMap["data"].(map[string]interface{})
++	got := data["dp"].(map[string]interface{})["value"]
++	if got != value {
++		t.Errorf("value = %q, want %q", got, value)
++	}
++}
++
+ // TestGetVehicleData_DispatchesToStateBackend confirms the thunk-form
+ // getVehicleData routes through the currently-installed stateBackend
+ // — the whole point of the refactor.

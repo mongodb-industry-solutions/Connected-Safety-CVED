@@ -1,0 +1,63 @@
+# Kanopy
+knowledge_base_kanopy/
+
+# Security checks
+security_check.sh
+SECURITY_CHECK_README.md
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environments
+# env files (can opt-in for committing if needed)
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# tmp files
+third-party-licenses.json
+
+# Demo template - TODO: UNCOMMENT BELOW LINES BEFORE PUBLISHING
+#/utils/style
+#/utils/templates

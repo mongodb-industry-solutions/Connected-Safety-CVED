@@ -1,0 +1,617 @@
+[
+ {
+  "path": "Vehicle.Safety.Airbag.IsReleased",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "false"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "true"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.CurrentLocation.Latitude",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "55.935"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "55.936"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "55.937"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "55.938"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "55.939"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "55.94"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "55.941"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "55.942"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "55.943"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.CurrentLocation.Longitude",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "13.52"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "13.52175"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "13.5235"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "13.52525"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "13.527"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "13.52875"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "13.5305"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "13.53225"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "13.534"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Speed",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "90"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "92"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "91"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "93"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "95"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "94"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "92"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "[\"92\", \"85\", \"64\"]"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "[\"92\", \"85\", \"64\"]"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Acceleration.Longitudinal",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "0.2"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "0.3"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0.0"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "0.4"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "-0.2"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "-0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "[\"-0.5\", \"-4.0\", \"-6.5\"]"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "[\"-0.5\", \"-4.0\", \"-6.5\"]"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.AngularVelocity.Roll",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "0.5"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "0"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "1.0"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "2.0"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "[\"2.0\", \"35.0\", \"140.0\"]"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "[\"2.0\", \"35.0\", \"140.0\"]"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.VehicleIdentification.LicensePlate",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "MKR 482"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.VehicleIdentification.Claim",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "This is an emergency event message sent from the vehicle with VIN=1FTBR3X82PKA24680 and license plate number=MKR 482"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Occupant.Count",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "3"
+   }
+  ]
+ },
+ {
+  "path": "Vehicle.Cabin.Seat.Row1.DriverSide.Weight",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "71"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "71"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Identification.Name",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "Sofia Lindqvist"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "Sofia Lindqvist"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatPosition.Row",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "2"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatPosition.Index",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "2"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "2"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatLayout.RowTotal",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "3"
+   }
+  ]
+ },
+ {
+  "path": "Occupant1.Position.SeatLayout.RowLayout",
+  "dp": [
+   {
+    "ts": "2020-04-15T13:37:00Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:05Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:10Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:15Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:20Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:25Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:30Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:35Z",
+    "value": "3"
+   },
+   {
+    "ts": "2020-04-15T13:37:40Z",
+    "value": "3"
+   }
+  ]
+ }
+]
